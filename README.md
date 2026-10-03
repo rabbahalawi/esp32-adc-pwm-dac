@@ -5,9 +5,9 @@
 **Equipment:** multimeter [digital], oscilloscope [no]
 
 ## Wiring
-- Pot: 3V3 / GPIO34 (wiper) / GND
-- LED: GPIO19 -> 220 ohm -> LED -> GND
-- DAC: probed at GPIO25
+- Pot: 3V3 / GPIO4 (wiper) / GND
+- LED: GPIO5 -> 220 ohm -> LED -> GND
+- DAC: GPIO25 using the classic ESP32
 
 ![wiring](images/circuit_wiring.jpg)
 
@@ -28,3 +28,6 @@
 
 ## Why the ADC endpoint may saturate
 (The ESP32 ADC can reach around 4095 when the input gets near its limit. After this point, the reading may stop increasing even if the voltage increases. This is called saturation. analogReadMilliVolts() is more accurate because it uses calibration.)
+
+## Demo video
+[Watch the demo](demo.mp4)
