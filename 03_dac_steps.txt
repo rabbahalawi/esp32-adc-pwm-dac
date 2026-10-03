@@ -1,0 +1,23 @@
+#include <Arduino.h>
+const int DAC_PIN = 25;
+
+void setup() {
+  Serial.begin(115200);
+#if CONFIG_IDF_TARGET_ESP32
+  dacWrite(DAC_PIN, 0);
+#else
+  Serial.println("This chip has no DAC. Run on an original ESP32.");
+#endif
+}
+
+void loop() {
+#if CONFIG_IDF_TARGET_ESP32
+  const uint8_t codes[] = {0, 64, 128, 192, 255};
+  for (uint8_t c : codes) {
+    dacWrite(DAC_PIN, c);
+    delay(2000);
+  }
+#else
+  delay(1000);
+#endif
+}
